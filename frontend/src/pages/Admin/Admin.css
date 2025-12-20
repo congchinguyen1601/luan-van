@@ -1,0 +1,1049 @@
+/* Trang đăng nhập admin */
+.admin-bg-login {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3f8f2, #f6fff9);
+}
+
+/* Các trang quản lý dạng full width (SP, DM,...) */
+.admin-bg-wide {
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #d7f1e8, #c7e7da);
+  padding: 30px 50px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+/* Các trang quản lý dạng centered card (dashboard, đơn hàng,…) */
+.admin-bg-main {
+  min-height: 100vh;
+  width: 100%;
+  padding: 32px 0;
+  background: linear-gradient(135deg, #d7f0e4 0%, #e9fff4 40%, #f4fff9 100%);
+  display: flex;
+  justify-content: center;
+}
+
+/* Card nhỏ (login) */
+.admin-card-login {
+  width: 380px;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  padding: 26px 24px 22px;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Card trung bình (danh mục) */
+.admin-card-md {
+  max-width: 900px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Card lớn (sản phẩm, đơn hàng) */
+.admin-card-lg {
+  max-width: 1150px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Padding đơn giản cho 1 số page */
+.admin-page-padding {
+  padding: 24px;
+}
+
+/* ========== TYPOGRAPHY / TEXT ========== */
+
+.admin-title-h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 8px;
+}
+
+.admin-title-h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1E6F5C;
+  margin-bottom: 8px;
+}
+
+.admin-subtext {
+  font-size: 14px;
+  color: #52635c;
+  margin-bottom: 16px;
+}
+
+.admin-subtext-muted {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+.admin-text-center {
+  text-align: center;
+}
+
+.admin-text-small {
+  font-size: 13px;
+}
+
+/* ========== ALERT / MESSAGE ========== */
+
+.admin-alert {
+  margin-bottom: 16px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.admin-alert-success {
+  background: #e2f6eb;
+  color: #0f7049;
+}
+
+.admin-alert-error {
+  background: #fdeeee;
+  color: #b3261e;
+}
+
+/* ========== FORM / INPUT ========== */
+
+.admin-form {
+  margin-bottom: 24px;
+}
+
+.admin-form-group {
+  margin-bottom: 12px;
+}
+
+.admin-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #234136;
+  margin-bottom: 4px;
+}
+
+.admin-input,
+.admin-select,
+.admin-textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #bad7cd;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+}
+
+/* Input bo tròn kiểu login */
+.admin-input-round {
+  border-radius: 10px;
+  border-color: #cfe3da;
+}
+
+.admin-textarea {
+  resize: vertical;
+}
+
+.admin-form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.admin-flex-1 {
+  flex: 1;
+}
+
+.admin-flex-2 {
+  flex: 2;
+}
+
+.admin-help-text {
+  font-size: 12px;
+  color: #7a8c84;
+  margin-top: 4px;
+}
+
+/* ========== BUTTONS ========== */
+
+.admin-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.admin-btn-primary {
+  background-color: #1E6F5C;
+  color: #fff;
+}
+
+.admin-btn-secondary {
+  background-color: #e5e5e5;
+  color: #333;
+}
+
+.admin-btn-pill {
+  border-radius: 999px;
+}
+
+.admin-btn-block {
+  width: 100%;
+}
+
+.admin-btn-small {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.admin-btn-small-neutral {
+  background: #e1f0ff;
+}
+
+.admin-btn-small-danger {
+  background: #ffe3e3;
+}
+
+.admin-btn-small-primary {
+  background: #1E6F5C;
+  color: #fff;
+}
+
+.admin-btn-small-warning {
+  background: #f5e3c3;
+}
+
+/* Nav button trên Dashboard admin */
+.admin-nav-btn {
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 1px solid #16a34a;
+  background-color: #ffffff;
+  color: #166534;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+.admin-nav-btn:hover {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+/* ========== TABLES ========== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table-sm {
+  font-size: 13px;
+}
+
+.admin-thead-row {
+  background-color: #e2f3ea;
+}
+
+.admin-thead-row-light {
+  background-color: #f1f7f4;
+}
+
+.admin-th {
+  padding: 10px 12px;
+  font-weight: 600;
+  color: #0f172a;
+  border-bottom: 1px solid #cbd5e1;
+  text-align: left;
+}
+
+.admin-th-sm {
+  border: 1px solid #d7e5dd;
+  padding: 6px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.admin-td {
+  padding: 8px 12px;
+  color: #0f172a;
+  background-color: #ffffff;
+}
+
+.admin-td-sm {
+  border: 1px solid #e0eee7;
+  padding: 6px;
+}
+
+.admin-td-center {
+  text-align: center;
+}
+
+.admin-td-nowrap {
+  white-space: nowrap;
+}
+
+.admin-table-empty {
+  padding: 10px;
+  text-align: center;
+  color: #777;
+}
+
+/* ========== IMAGES (SẢN PHẨM) ========== */
+
+.admin-img-preview {
+  max-height: 80px;
+  border-radius: 8px;
+  border: 1px solid #d2e4da;
+  object-fit: cover;
+}
+
+.admin-img-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* ========== ĐĂNG NHẬP ADMIN BUTTON ========== */
+
+.admin-login-btn {
+  margin-top: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 0;
+  background: linear-gradient(135deg,#1E6F5C,#158f65);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-login-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* ====== Layout chung giống các trang admin khác ====== */
+.admin-title {
+  font-size: 26px;
+  color: #14723b; /* xanh giống trang Duyệt sản phẩm */
+  margin-bottom: 4px;
+}
+
+.admin-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.admin-card-title {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #14723b;
+}
+
+/* ====== Form voucher ====== */
+.voucher-form .form-row {
+  margin-bottom: 10px;
+}
+
+.voucher-form .form-row label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.voucher-form input,
+.voucher-form textarea,
+.voucher-form select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  padding: 6px 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.voucher-form input:focus,
+.voucher-form textarea:focus,
+.voucher-form select:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.25);
+}
+
+.voucher-form textarea {
+  resize: vertical;
+}
+
+.voucher-form .two-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.required {
+  color: #e11d48;
+}
+
+/* ====== Button style (reuse cho giống trang NPP) ====== */
+.btn-primary {
+  background: #14723b;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: #f3f4f6;
+  color: #111827;
+  border-radius: 20px;
+  padding: 7px 16px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: #e0f2f1;
+  color: #064e3b;
+  border-radius: 16px;
+  border: none;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 16px;
+  border: none;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ====== Table style gần giống trang Duyệt sản phẩm NPP ====== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-table thead tr {
+  background: #e5f9ed;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-table th {
+  font-weight: 600;
+  color: #14532d;
+  white-space: nowrap;
+}
+
+.table-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* badge trạng thái */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.badge-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-muted {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+
+
+
+
+/* ====== THEME CHUNG ====== */
+:root {
+  /* đổi mã màu này nếu bro có mã "green ruler" riêng */
+  --primary-color: #16a34a;             /* xanh lá chủ đạo */
+  --primary-soft: rgba(22, 163, 74, 0.1);
+  --page-bg: #f3fdf6;                   /* nền xanh rất nhạt */
+}
+
+/* ====== LAYOUT CHUNG ====== */
+
+.adm-layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, var(--page-bg));
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ====== SIDEBAR ====== */
+
+.adm-sidebar {
+  width: 230px;
+  background: var(--primary-color); /* sidebar xanh lá */
+  color: #fff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.adm-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* menu */
+
+.adm-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adm-nav-item {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #e7ffe9;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.adm-nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.adm-nav-item-active {
+  background: #ffffff;
+  color: var(--primary-color);
+}
+
+/* ====== MAIN CONTENT ====== */
+
+.adm-main {
+  flex: 1;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header: breadcrumb + logout */
+
+.adm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.adm-breadcrumb {
+  font-size: 14px;
+  color: #777;
+}
+
+.adm-breadcrumb-current {
+  font-weight: 600;
+  color: #333;
+}
+
+/* nút đăng xuất */
+
+.adm-logout-btn {
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+  transition: transform 0.1s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.adm-logout-btn:hover {
+  opacity: 0.97;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.35);
+}
+
+.adm-logout-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+}
+
+/* ====== CARD NỘI DUNG ====== */
+
+.adm-content-card {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 24px 28px 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.04);
+  flex: 1;
+  overflow: hidden;
+}
+
+.adm-page-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+/* ====== TABLE DÙNG CHUNG (OPTIONAL) ====== */
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.adm-table thead tr {
+  background: #e9f9ee;
+}
+
+.adm-table th,
+.adm-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.adm-table th {
+  font-weight: 600;
+  color: #555;
+}
+
+.adm-table tbody tr:hover {
+  background: #f7fff9;
+}
+
+/* badge nhỏ cho vai trò, trạng thái */
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-role-admin {
+  background: var(--primary-soft);
+  color: var(--primary-color);
+}
+
+.badge-role-user {
+  background: #e7f5ff;
+  color: #1c7ed6;
+}
+
+.badge-status-active {
+  background: #e6ffed;
+  color: #2b8a3e;
+}
+
+.badge-status-block {
+  background: #ffe3e3;
+  color: #c92a2a;
+}
+
+/* phân trang */
+
+.adm-table-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.adm-table-pagination button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.adm-table-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 900px) {
+  .adm-sidebar {
+    width: 190px;
+    padding: 20px 16px;
+  }
+
+  .adm-main {
+    padding: 18px 18px;
+  }
+
+  .adm-content-card {
+    padding: 18px 20px 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .adm-layout {
+    flex-direction: column;
+  }
+
+  .adm-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .adm-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .adm-main {
+    padding: 14px;
+  }
+}
+
+
+/* ===== Reviews UI (NPP) ===== */
+.rv-page {
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.rv-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.rv-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.rv-sub {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.rv-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rv-badge {
+  border: 1px solid #e9ecef;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-width: 150px;
+}
+
+.rv-badge-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.rv-badge-val {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.rv-badge-suffix {
+  font-weight: 700;
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 6px;
+}
+
+.rv-alert {
+  background: #fff0f0;
+  border: 1px solid #ffd6d6;
+  color: #b42318;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  margin: 10px 0 12px;
+}
+
+.rv-toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.rv-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e9ecef;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 10px;
+  flex: 1;
+  min-width: 260px;
+}
+
+.rv-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.rv-search-icon {
+  opacity: 0.75;
+}
+
+.rv-chip {
+  border: 1px solid #e9ecef;
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.rv-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rv-select {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 8px 10px;
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.rv-summary {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.rv-summary-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e9ecef;
+  background: #fff;
+  padding: 8px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.rv-summary-item.active {
+  border-color: #16a34a;
+  background: #f0fdf4;
+}
+
+.rv-summary-star {
+  font-weight: 800;
+  color: #111827;
+}
+
+.rv-summary-count {
+  font-weight: 800;
+  color: #16a34a;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.rv-table-wrap {
+  overflow: auto;
+  border: 1px solid #e9ecef;
+  border-radius: 14px;
+}
+
+.rv-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.rv-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  border-bottom: 1px solid #e9ecef;
+  padding: 12px;
+  text-align: left;
+  font-size: 13px;
+  color: #334155;
+  z-index: 1;
+}
+
+.rv-table tbody td {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 12px;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.rv-table tbody tr:hover {
+  background: #fcfcfd;
+}
+
+.rv-id {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.rv-cell-title {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.rv-cell-sub {
+  color: #475569;
+  font-weight: 600;
+}
+
+.rv-content {
+  color: #0f172a;
+  line-height: 1.4;
+  max-width: 520px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rv-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.rv-star {
+  font-size: 16px;
+  opacity: 0.25;
+}
+
+.rv-star.on {
+  opacity: 1;
+}
+
+.rv-star-num {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 700;
+  margin-left: 8px;
+}

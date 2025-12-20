@@ -1,0 +1,247 @@
+:root {
+  --primary-color: #16a34a;
+  --primary-soft: rgba(22, 163, 74, 0.1);
+  --page-bg: #f3fdf6;
+}
+
+/* layout */
+.adm-layout {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, var(--page-bg));
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* sidebar */
+.adm-sidebar {
+  width: 230px;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.adm-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.adm-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adm-nav-item {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #e7ffe9;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.adm-nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.adm-nav-item-active {
+  background: #ffffff;
+  color: var(--primary-color);
+}
+
+/* main */
+.adm-main {
+  flex: 1;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+.adm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.adm-breadcrumb {
+  font-size: 14px;
+  color: #777;
+}
+
+.adm-breadcrumb-current {
+  font-weight: 600;
+  color: #333;
+}
+
+/* logout */
+.adm-logout-btn {
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+  transition: transform 0.1s, box-shadow 0.15s, opacity 0.15s;
+}
+
+.adm-logout-btn:hover {
+  opacity: 0.97;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.35);
+}
+
+.adm-logout-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+}
+
+/* card */
+.adm-content-card {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 24px 28px 28px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.04);
+  flex: 1;
+  overflow: hidden;
+}
+
+.adm-page-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+/* table */
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.adm-table thead tr {
+  background: #e9f9ee;
+}
+
+.adm-table th,
+.adm-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.adm-table th {
+  font-weight: 600;
+  color: #555;
+}
+
+.adm-table tbody tr:hover {
+  background: #f7fff9;
+}
+
+/* badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge-role-admin {
+  background: var(--primary-soft);
+  color: var(--primary-color);
+}
+
+.badge-role-user {
+  background: #e7f5ff;
+  color: #1c7ed6;
+}
+
+.badge-status-active {
+  background: #e6ffed;
+  color: #2b8a3e;
+}
+
+.badge-status-block {
+  background: #ffe3e3;
+  color: #c92a2a;
+}
+
+/* pagination */
+.adm-table-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.adm-table-pagination button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.adm-table-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .adm-sidebar {
+    width: 190px;
+    padding: 20px 16px;
+  }
+
+  .adm-main {
+    padding: 18px 18px;
+  }
+
+  .adm-content-card {
+    padding: 18px 20px 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  .adm-layout {
+    flex-direction: column;
+  }
+
+  .adm-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .adm-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .adm-main {
+    padding: 14px;
+  }
+}

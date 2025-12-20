@@ -1,0 +1,53 @@
+/* RESET CƠ BẢN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* BODY CƠ BẢN */
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #ffffff; /* Nền trắng — TrangChu tự có background riêng */
+  color: #213547;
+  line-height: 1.5;
+  overflow-x: hidden; /* tránh scroll ngang */
+}
+
+/* Liên kết */
+a {
+  font-weight: 500;
+  color: #1E6F5C;
+  text-decoration: none;
+}
+a:hover {
+  color: #158f65;
+}
+
+/* Button */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid #1E6F5C;
+}
