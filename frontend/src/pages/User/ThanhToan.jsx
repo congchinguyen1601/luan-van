@@ -10,8 +10,25 @@ export default function ThanhToan() {
   const [phuongThuc, setPhuongThuc] = useState('Tiền mặt')
   const [msg, setMsg] = useState('')
   const [loading, setLoading] = useState(false)
-  const [donHangId, setDonHangId] = useState(null) // đơn hàng dùng cho PayPal
+  const [donHangId, setDonHangId] = useState(null)
   const navigate = useNavigate()
+
+  // =========================
+  // ✅ Thông tin người nhận (auto fill từ user)
+  // =========================
+  const [receiver, setReceiver] = useState({
+    ho_ten: '',
+    email: '',
+    sdt: '',
+    dia_chi: '',
+    ghi_chu: '',
+  })
+  const [loadingReceiver, setLoadingReceiver] = useState(false)
+
+  const handleReceiverChange = (field) => (e) => {
+    const value = e.target.value
+    setReceiver((prev) => ({ ...prev, [field]: value }))
+  }
 
   // voucher
   const [maCode, setMaCode] = useState('')
@@ -33,6 +50,7 @@ export default function ThanhToan() {
     setVoucherMsg('')
   }
 
+  // Load cart
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem('cart') || '[]')
     setCart(stored)
@@ -44,10 +62,45 @@ export default function ThanhToan() {
     setTongTien(total)
   }, [])
 
+  // ✅ Load user info để auto fill người nhận
+  useEffect(() => {
+    const loadMe = async () => {
+      const token = localStorage.getItem('token')
+      if (!token) return
+
+      try {
+        setLoadingReceiver(true)
+        const res = await fetch(`${API_BASE}/xac-thuc/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+
+        const data = await res.json().catch(() => ({}))
+        if (!res.ok) return
+
+        const u = data?.user || data?.data || data || {}
+
+        setReceiver((prev) => ({
+          ...prev,
+          ho_ten: u.ho_ten || '',
+          email: u.email || '',
+          sdt: u.sdt || '',
+          dia_chi: u.dia_chi || '',
+        }))
+      } catch (err) {
+        console.error('Load /xac-thuc/me error:', err)
+      } finally {
+        setLoadingReceiver(false)
+      }
+    }
+
+    loadMe()
+  }, [])
+
   useEffect(() => {
     setTongSauGiam(Math.max(0, Number(tongTien) - Number(soTienGiam)))
   }, [tongTien, soTienGiam])
 
+  // Load voucher list gợi ý
   useEffect(() => {
     const load = async () => {
       if (!tongTien || tongTien <= 0) {
@@ -60,7 +113,9 @@ export default function ThanhToan() {
         const token = localStorage.getItem('token')
 
         const res = await fetch(
-          `${API_BASE}/ma-giam-gia/available?tong_tien=${encodeURIComponent(tongTien)}`,
+          `${API_BASE}/ma-giam-gia/available?tong_tien=${encodeURIComponent(
+            tongTien
+          )}`,
           { headers: token ? { Authorization: `Bearer ${token}` } : {} }
         )
 
@@ -77,7 +132,8 @@ export default function ThanhToan() {
 
     load()
   }, [tongTien])
-//áp dung voucher
+
+  // áp dụng voucher
   const handleApplyVoucher = async (codeOverride) => {
     setVoucherMsg('')
 
@@ -131,6 +187,7 @@ export default function ThanhToan() {
     }
   }
 
+  // PayPal render buttons
   useEffect(() => {
     if (phuongThuc !== 'PayPal') return
     if (!donHangId) return
@@ -193,10 +250,16 @@ export default function ThanhToan() {
 
   const datHang = async () => {
     setMsg('')
-    if (!cart.length) return setMsg('Giỏ hàng đang trống, hãy chọn sản phẩm trước khi đặt.')
+    if (!cart.length)
+      return setMsg('Giỏ hàng đang trống, hãy chọn sản phẩm trước khi đặt.')
 
     const token = localStorage.getItem('token')
     if (!token) return setMsg('Bạn cần đăng nhập trước khi đặt hàng.')
+
+    // ✅ thiếu trường nào thì mới bắt nhập
+    if (!receiver.ho_ten.trim()) return setMsg('Vui lòng nhập họ tên người nhận.')
+    if (!receiver.sdt.trim()) return setMsg('Vui lòng nhập số điện thoại.')
+    if (!receiver.dia_chi.trim()) return setMsg('Tài khoản chưa có địa chỉ. Vui lòng nhập địa chỉ giao hàng.')
 
     try {
       setLoading(true)
@@ -242,11 +305,15 @@ export default function ThanhToan() {
     }
   }
 
+  const hasDiaChi = !!receiver.dia_chi?.trim()
+
   return (
     <div className="checkout-page">
       <div className="checkout-wrapper">
         <h2 className="checkout-title">Thanh toán</h2>
-        <p className="checkout-subtitle">Kiểm tra đơn hàng và chọn phương thức thanh toán phù hợp.</p>
+        <p className="checkout-subtitle">
+          Kiểm tra đơn hàng và chọn phương thức thanh toán phù hợp.
+        </p>
 
         {msg && (
           <div
@@ -264,43 +331,69 @@ export default function ThanhToan() {
           <div className="checkout2-left">
             <div className="checkout2-card">
               <h3 className="checkout2-card-title">Thông tin người nhận</h3>
+
+              {loadingReceiver && (
+                <p className="checkout2-hint">Đang lấy thông tin tài khoản...</p>
+              )}
+
               <div className="checkout2-row2">
                 <div className="checkout2-field">
                   <label>Họ và Tên</label>
-                  <input placeholder="Nhập họ tên" />
+                  <input
+                    placeholder="Nhập họ tên"
+                    value={receiver.ho_ten}
+                    onChange={handleReceiverChange('ho_ten')}
+                  />
                 </div>
                 <div className="checkout2-field">
                   <label>Email</label>
-                  <input placeholder="Nhập email" />
+                  <input
+                    placeholder="Nhập email"
+                    value={receiver.email}
+                    onChange={handleReceiverChange('email')}
+                    disabled={!!receiver.email}
+                  />
                 </div>
               </div>
+
               <div className="checkout2-row2">
                 <div className="checkout2-field">
                   <label>Số điện thoại</label>
-                  <input placeholder="Nhập số điện thoại" />
+                  <input
+                    placeholder="Nhập số điện thoại"
+                    value={receiver.sdt}
+                    onChange={handleReceiverChange('sdt')}
+                  />
                 </div>
               </div>
 
               <h3 className="checkout2-card-title" style={{ marginTop: 14 }}>
                 Địa chỉ giao hàng
               </h3>
+
               <div className="checkout2-field">
                 <label>Địa chỉ</label>
-                <input placeholder="Số nhà, tên đường..." />
+                <input
+                  placeholder="Tài khoản chưa có địa chỉ, vui lòng nhập..."
+                  value={receiver.dia_chi}
+                  onChange={handleReceiverChange('dia_chi')}
+                  disabled={hasDiaChi} // ✅ có địa chỉ trong tài khoản thì khóa, lấy từ tài khoản thôi
+                />
+                {hasDiaChi && (
+                  <small className="profile-note">
+                    Địa chỉ lấy từ thông tin tài khoản. Muốn đổi, vui lòng cập nhật trong trang Thông tin cá nhân.
+                  </small>
+                )}
               </div>
-              <div className="checkout2-row2">
-                <div className="checkout2-field">
-                  <label>Quận/Huyện</label>
-                  <input placeholder="Quận/Huyện" />
-                </div>
-                <div className="checkout2-field">
-                  <label>Tỉnh/Thành phố</label>
-                  <input placeholder="Tỉnh/Thành phố" />
-                </div>
-              </div>
+
               <div className="checkout2-field">
                 <label>Ghi chú</label>
-                <textarea rows={3} placeholder="Ghi chú cho shop (nếu có)..." />
+                <textarea
+                  rows={3}
+                  placeholder="Ghi chú cho shop (nếu có)..."
+                  value={receiver.ghi_chu}
+                  onChange={handleReceiverChange('ghi_chu')}
+                />
               </div>
             </div>
 
